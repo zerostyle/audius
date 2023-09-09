@@ -11,11 +11,10 @@ import { TimeRangeSelect } from './TimeRangeSelect'
 import { FilterFavoriteButton } from './FilterFavoriteButton'
 import { FavoriteButton } from './FavoriteButton'
 import { Loader } from './Loader'
+import styles from './TrackList.module.css'
 
-type Props = {}
 
-
-export function TrackList({ }: Props) {
+export function TrackList() {
     const router = useRouter()
     // Search params
     const searchParams = useSearchParams()
@@ -41,22 +40,24 @@ export function TrackList({ }: Props) {
 
     return (
         <Flex direction='column' gap="6">
-            <Flex justify="between" align="center">
-                <Heading size="8">Trending</Heading>
+            <Flex direction='column' gap="6" px={{ initial: "6", sm: "8" }}>
+                <Flex justify="between" align="center">
+                    <Heading size={{ initial: "7", sm: "8" }}>Trending</Heading>
 
-                {hasQuery && (
-                    <Button onClick={handleResetFilters}>
-                        Reset Filters
-                    </Button>
-                )}
-            </Flex>
+                    {hasQuery && (
+                        <Button onClick={handleResetFilters}>
+                            Reset Filters
+                        </Button>
+                    )}
+                </Flex>
 
-            <Flex justify="between">
-                <FilterFavoriteButton />
+                <div className={styles.filters}>
+                    <FilterFavoriteButton />
 
-                <TimeRangeSelect />
+                    <TimeRangeSelect className={styles.time} />
 
-                <SelectGenre />
+                    <SelectGenre className={styles.genre} />
+                </div>
             </Flex>
 
             {isLoading && (
@@ -65,7 +66,7 @@ export function TrackList({ }: Props) {
 
 
             {!isLoading && !!tracks?.length && (
-                <Flex asChild direction='column' gap="6">
+                <Flex asChild direction='column' gap="6" px={{ initial: "4", sm: "8" }}>
                     <ol>
                         {tracks.map((track: any) => {
                             const isFavorite = !!favorites[track.id]

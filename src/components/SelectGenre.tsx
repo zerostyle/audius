@@ -1,9 +1,13 @@
-import { Select } from '@radix-ui/themes'
+import { Flex, Select } from '@radix-ui/themes'
 import React, { useCallback, useEffect, useState } from 'react'
 import { TRENDING_GENRES } from '@/utils/genre'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-export function SelectGenre() {
+type Props = {
+    className?: string
+}
+
+export function SelectGenre({ className }: Props) {
     const searchParams = useSearchParams()
     const currentGenre = searchParams.get("genre")
 
@@ -30,17 +34,20 @@ export function SelectGenre() {
     }, [currentGenre])
 
     return (
-        <Select.Root size="2" value={value} defaultValue={value} onValueChange={handleValueChange} >
-            <Select.Trigger placeholder="Select a genre..." />
-            <Select.Content>
-                <Select.Group>
-                    <Select.Item value="" >All genres</Select.Item>
+        <Flex className={className} justify="end">
+            <Select.Root size="2" value={value} defaultValue={value} onValueChange={handleValueChange} >
+                <Select.Trigger placeholder="Select a genre..." />
+                <Select.Content>
+                    <Select.Group>
+                        <Select.Item value="" >All genres</Select.Item>
 
-                    {TRENDING_GENRES.map((genre) => (
-                        <Select.Item value={genre} key={genre}>{genre}</Select.Item>
-                    ))}
-                </Select.Group>
-            </Select.Content>
-        </Select.Root>
+                        {TRENDING_GENRES.map((genre) => (
+                            <Select.Item value={genre} key={genre}>{genre}</Select.Item>
+                        ))}
+                    </Select.Group>
+                </Select.Content>
+            </Select.Root>
+        </Flex>
+
     )
 }

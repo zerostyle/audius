@@ -1,9 +1,13 @@
 
-import { Tabs } from '@radix-ui/themes'
+import { Flex, Tabs } from '@radix-ui/themes'
 import React, { useEffect, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-export function TimeRangeSelect() {
+type Props = {
+    className?: string
+}
+
+export function TimeRangeSelect({ className }: Props) {
     const searchParams = useSearchParams()
     const timeRange = searchParams.get("timeRange") || 'week'
     const pathname = usePathname()
@@ -24,14 +28,16 @@ export function TimeRangeSelect() {
     }, [timeRange])
 
     return (
-        <Tabs.Root value={value} onValueChange={handleSelect} >
-            <Tabs.List size="2">
-                <Tabs.Trigger value="week">Week</Tabs.Trigger>
-                <Tabs.Trigger value="month">Month</Tabs.Trigger>
-                <Tabs.Trigger value="allTime">All time</Tabs.Trigger>
-            </Tabs.List>
+        <Flex className={className} justify="center" width={{ initial: '100%', sm: 'auto' }} >
+            <Tabs.Root value={value} onValueChange={handleSelect} >
+                <Tabs.List size="2">
+                    <Tabs.Trigger value="week">Week</Tabs.Trigger>
+                    <Tabs.Trigger value="month">Month</Tabs.Trigger>
+                    <Tabs.Trigger value="allTime">All time</Tabs.Trigger>
+                </Tabs.List>
 
-        </ Tabs.Root >
+            </ Tabs.Root >
+        </Flex>
     )
 }
 

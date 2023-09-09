@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { HeartIcon } from './HeartIcon'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { Flex } from '@radix-ui/themes'
 
 export function FilterFavoriteButton() {
     const searchParams = useSearchParams()
@@ -21,8 +22,10 @@ export function FilterFavoriteButton() {
     }, [isSelected, searchParams])
 
     return (
-        <Link href={`/${query}`}>
-            <HeartIcon {...(isSelected && { fill: "var(--accent-9)", stroke: "var(--accent-9)" })} />
-        </Link>
+        <Flex justify="start">
+            <Link href={`/${query}`}>
+                <HeartIcon {...(isSelected && { fill: "var(--accent-9)", stroke: "var(--accent-9)" })} />
+            </Link>
+        </Flex>
     )
 }

@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, Card, Flex, Heading, Text } from '@radix-ui/themes'
-import { type } from 'os'
+import { Card, Flex, Heading, Text } from '@radix-ui/themes'
 import React, { ReactNode, useCallback } from 'react'
 
 type Track = {
@@ -22,9 +21,9 @@ export function TrackItem({ children, track }: Props) {
 
     return (
         <Card>
-            <Flex asChild gap="6" align="center" justify="between">
+            <Flex asChild gap="6" align="center" justify="between" direction={{ initial: "column", xs: "row" }}>
                 <li>
-                    <Flex gap="6" align="center">
+                    <Flex gap="6" align="center" direction={{ initial: "column", xs: "row" }}>
                         <img src={artwork['150x150']} width={150} height={150} alt={title} />
 
                         <Flex direction="column" gap="2" justify="center">

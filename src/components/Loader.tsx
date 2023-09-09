@@ -9,8 +9,8 @@ export function Loader() {
             <MutatingDots
                 height="100"
                 width="100"
-                color="#6464D8"
-                secondaryColor='#6464D8'
+                color="var(--accent-9)"
+                secondaryColor='var(--accent-9)'
                 radius='12.5'
                 ariaLabel="Loading"
                 visible
