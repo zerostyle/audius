@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { Card, Flex, Heading, Text } from '@radix-ui/themes'
+import { Card, Flex, Heading, Inset, Text } from '@radix-ui/themes'
 import React, { ReactNode, useCallback } from 'react'
+import styles from './TrackItem.module.css'
 
 type Track = {
     id: string
@@ -20,23 +21,31 @@ export function TrackItem({ children, track }: Props) {
     const { artwork, title, user } = track
 
     return (
-        <Card>
-            <Flex asChild p={{ initial: "3", xs: '0' }} gap={{ initial: '4', xs: "6" }} align="center" justify="between" direction={{ initial: "column", xs: "row" }}>
-                <li>
-                    <Flex gap={{ initial: '4', xs: "6" }} align="center" direction={{ initial: "column", xs: "row" }}>
-                        <img src={artwork['150x150']} width={150} height={150} alt={title} />
+        <Card asChild>
+            <li className={styles.item}>
+                <Flex
+                    gap={{ initial: '0', xs: "6" }}
+                    align={{ xs: "center" }}
+                >
+                    <Inset side="left">
+                        <Flex width="100%" gap={{ initial: '4', xs: "6" }} align="center">
+                            <img className={styles.image} src={artwork['150x150']} width={150} height={150} alt={title} />
 
-                        <Flex direction="column" gap="2" justify="center">
-                            <Heading as="h3">{title}</Heading>
-                            <Text>{user.name}</Text>
+                            <Flex direction="column" gap="2" justify="center" style={{}}>
+                                <Heading className={styles.ellipsis} as="h3" size={{ initial: '3', xs: '5' }}>{title}</Heading>
+                                <Text className={styles.ellipsis}>{user.name}</Text>
+                            </Flex>
                         </Flex>
-                    </Flex>
+                    </Inset>
 
-                    <Flex p="4">
+                    <Flex
+                        p={{ initial: '2', xs: '4' }}
+                        ml="auto"
+                    >
                         {children}
                     </Flex>
-                </li>
-            </Flex>
+                </Flex>
+            </li>
         </Card>
     )
 }

@@ -1,0 +1,25 @@
+.image {
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: scale-down;
+
+    @media (min-width: 520px) {
+        max-width: 120px;
+        max-height: 120px;
+    }
+}
+
+.item {
+    list-style: none;
+}
+
+.ellipsis {
+    max-width: 40vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @media (min-width: 520px) {
+        max-width: none;
+    }
+}
