@@ -1,9 +1,18 @@
-import styles from './page.module.css'
+'use client'
+
+import { Flex } from '@radix-ui/themes'
+import { TrackList } from '@/components/TrackList'
+import { Suspense } from 'react'
+import { Loader } from '@/components/Loader'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      Audius
-    </main>
+    <Flex asChild direction="column" px="8" py="6" gap="8">
+      <main>
+        <Suspense fallback={<Loader />}>
+          <TrackList />
+        </Suspense>
+      </main>
+    </Flex>
   )
 }
