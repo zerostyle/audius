@@ -14,12 +14,12 @@
 }
 
 .ellipsis {
-    max-width: 40vw;
+    max-width: calc(100vw - 200px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
     @media (min-width: 520px) {
-        max-width: none;
+        max-width: calc(100vw - 300px);
     }
 }
