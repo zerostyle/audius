@@ -6,23 +6,18 @@ import { TrackItem } from './TrackItem'
 import { useGetTrendingTracks } from '@/hooks/useGetTrendingTracks'
 import { useURLQuery } from '@/hooks/useURLQuery'
 import { SelectGenre } from './SelectGenre'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { TimeRangeSelect } from './TimeRangeSelect'
 import { FilterFavoriteButton } from './FilterFavoriteButton'
 import { FavoriteButton } from './FavoriteButton'
 import { Loader } from './Loader'
 import styles from './TrackList.module.css'
 
-
 export function TrackList() {
     const router = useRouter()
-    // Search params
-    const searchParams = useSearchParams()
-    const isFilteredByFavorite = !!searchParams.get('favorites')
-    const hasQuery = searchParams.size > 0
 
     // Trending tracks
-    const { timeRange, genre } = useURLQuery()
+    const { timeRange, genre, isFilteredByFavorite, hasQuery } = useURLQuery()
     const { tracks, isLoading } = useGetTrendingTracks({ time: timeRange, genre })
 
     // Favorites
@@ -33,6 +28,7 @@ export function TrackList() {
         setFavorites({ ...favorites, [id]: !isFavorite })
     }, [favorites])
 
+    // Reset filters
     const handleResetFilters = useCallback(() => {
         router.push('/')
     }, [router])
