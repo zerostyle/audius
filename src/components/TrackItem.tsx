@@ -21,9 +21,9 @@ export function TrackItem({ children, track }: Props) {
 
     return (
         <Card>
-            <Flex asChild gap="6" align="center" justify="between" direction={{ initial: "column", xs: "row" }}>
+            <Flex asChild p={{ initial: "3", xs: '0' }} gap={{ initial: '4', xs: "6" }} align="center" justify="between" direction={{ initial: "column", xs: "row" }}>
                 <li>
-                    <Flex gap="6" align="center" direction={{ initial: "column", xs: "row" }}>
+                    <Flex gap={{ initial: '4', xs: "6" }} align="center" direction={{ initial: "column", xs: "row" }}>
                         <img src={artwork['150x150']} width={150} height={150} alt={title} />
 
                         <Flex direction="column" gap="2" justify="center">
