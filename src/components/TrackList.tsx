@@ -62,7 +62,7 @@ export function TrackList() {
 
 
             {!isLoading && !!tracks?.length && (
-                <Flex asChild direction='column' gap={{ initial: "3", sm: "6" }} px={{ initial: "4", sm: "8" }}>
+                <Flex asChild direction='column' gap={{ initial: "3", sm: "5" }} px={{ initial: "4", sm: "8" }}>
                     <ol>
                         {tracks.map((track: any) => {
                             const isFavorite = !!favorites[track.id]

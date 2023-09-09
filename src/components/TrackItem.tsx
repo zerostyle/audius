@@ -25,15 +25,19 @@ export function TrackItem({ children, track }: Props) {
             <li className={styles.item}>
                 <Flex
                     gap={{ initial: '0', xs: "6" }}
-                    align={{ xs: "center" }}
+                    align="center"
                 >
                     <Inset side="left">
                         <Flex width="100%" gap={{ initial: '4', xs: "6" }} align="center">
                             <img className={styles.image} src={artwork['150x150']} width={150} height={150} alt={title} />
 
-                            <Flex direction="column" gap="2" justify="center" style={{}}>
-                                <Heading className={styles.ellipsis} as="h3" size={{ initial: '3', xs: '5' }}>{title}</Heading>
-                                <Text className={styles.ellipsis}>{user.name}</Text>
+                            <Flex direction="column" gap="2" justify="center">
+                                <Heading className={styles.ellipsis} as="h3" size={{ initial: '3', xs: '5' }}>
+                                    {title}
+                                </Heading>
+                                <Text className={styles.ellipsis}>
+                                    {user.name}
+                                </Text>
                             </Flex>
                         </Flex>
                     </Inset>
